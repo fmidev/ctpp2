@@ -1435,6 +1435,8 @@ fprintf(stderr, "0x%08X MOVIREG   %cR, %cR[%cR] ", iIP, CHAR_8((iDstReg >> 8) + 
                                                 oItVal["__inner__"] = 1;
                                             }
 
+											oItVal["__counter__"] = iIdx + 1;
+
                                             if ((iIdx + 1) % 2 == 1) { oItVal["__odd__"] = 1; }
                                             else                     { oItVal["__even__"] = 1; }
 
