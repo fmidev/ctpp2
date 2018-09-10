@@ -595,10 +595,6 @@ DumpBuffer & DumpJSONString(DumpBuffer & sResult, const STLW::string & sSource, 
                 sEscaped = "\\\\";
                 bFound = true;
                 break;
-            case '/':
-                sEscaped = "\\/";
-                bFound = true;
-                break;
             case '\b':
                 sEscaped = "\\b";
                 bFound = true;

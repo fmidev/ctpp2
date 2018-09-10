@@ -66,6 +66,7 @@ rm -rf %{buildroot}
 %changelog
 * Mon Sep 10 2018 Mika Heiskanen <mika.heiskanen@fmi.fi> - 2.8.6-0
 - Repackaged with jsonescape without ECMA mode for string encoding
+- Removed unnecessary escaping of / in JSON strings
 
 * Wed Aug 28 2013 Alexander Pankov <pianist@usrsrc.ru> - 2.8.4-0
 + Default gettext support libintl
