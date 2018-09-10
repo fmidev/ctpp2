@@ -1,6 +1,6 @@
 Summary: 	CTPP2 template engine.
 Name: 		ctpp2
-Version: 	2.8.5
+Version: 	2.8.6
 Release: 	0%{?dist}
 License: 	BSD
 Source: 	ctpp2-%{version}.tar.gz
@@ -33,7 +33,7 @@ make %{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir %{buildroot}
 make DESTDIR=%{buildroot} install
-mkdir $RPM_BUILD_ROOT/usr/share
+mkdir -p $RPM_BUILD_ROOT/usr/share
 mv $RPM_BUILD_ROOT/usr/man $RPM_BUILD_ROOT/usr/share/man
 %if %_lib == "lib64"
 mkdir %{buildroot}/usr/lib64
@@ -51,6 +51,7 @@ rm -rf %{buildroot}
 %{_bindir}/ctpp2json
 %{_bindir}/ctpp2vm
 %{_libdir}/libctpp2.so*
+%{_datadir}/doc/template_language.html
 #%{_datadir}/locale/ru_RU.CP1251/LC_MESSAGES/ctpp2.mo
 #%{_datadir}/locale/ru_RU.CP866/LC_MESSAGES/ctpp2.mo
 #%{_datadir}/locale/ru_RU.KOI8-R/LC_MESSAGES/ctpp2.mo
@@ -63,6 +64,9 @@ rm -rf %{buildroot}
 %{_libdir}/libctpp2-st.a
 
 %changelog
+* Mon Sep 10 2018 Mika Heiskanen <mika.heiskanen@fmi.fi> - 2.8.6-0
+- Repackaged with jsonescape without ECMA mode for string encoding
+
 * Wed Aug 28 2013 Alexander Pankov <pianist@usrsrc.ru> - 2.8.4-0
 + Default gettext support libintl
 
@@ -116,7 +120,7 @@ rm -rf %{buildroot}
 * Fri Apr  1 2011 Andrei V. Shetuhin <reki@reki.ru> - 2.6.13-0
 - Bug fixes
 
-* Tue Mar 11 2011 Andrei V. Shetuhin <reki@reki.ru> - 2.6.12-0
+* Fri Mar 11 2011 Andrei V. Shetuhin <reki@reki.ru> - 2.6.12-0
 - Bug fixes
 
 * Mon Feb 28 2011 Andrei V. Shetuhin <reki@reki.ru> - 2.6.11-0
@@ -140,7 +144,7 @@ rm -rf %{buildroot}
 * Tue Jul 27 2010 Andrei V. Shetuhin <reki@reki.ru> - 2.6.3-0
 - Fixes in TMPL_foreach iterators (thanks to Kirichenko Sergey <kirichenko@post.km.ru>)
 
-* Wed Jul 20 2010 Andrei V. Shetuhin <reki@reki.ru> - 2.6.2-0
+* Tue Jul 20 2010 Andrei V. Shetuhin <reki@reki.ru> - 2.6.2-0
 - New methods for CDT class: Swap & SortArray.
 
 * Wed Jun 16 2010 Andrei V. Shetuhin <reki@reki.ru> - 2.6.1-0
@@ -185,7 +189,7 @@ rm -rf %{buildroot}
 * Tue Jun  2 2009 Andrei V. Shetuhin <reki@reki.ru> - 2.5.5-0
 - Fixes in math. expressions inside functions: <TMPL_var FOO(bar + baz)>
 
-* Tue May 20 2009 Andrei V. Shetuhin <reki@reki.ru> - 2.5.4-0
+* Wed May 20 2009 Andrei V. Shetuhin <reki@reki.ru> - 2.5.4-0
 - Avoid a lot of warnings on gcc 4.3+, #include <...> changed to #include "..." for all files of project
 
 * Tue May 12 2009 Andrei V. Shetuhin <reki@reki.ru> - 2.5.3-0
@@ -203,10 +207,10 @@ rm -rf %{buildroot}
 * Wed Apr  8 2009 Andrei V. Shetuhin <reki@reki.ru> - 2.4.10-0
 - New function: WMLESCAPE
 
-* Tue Apr  2 2009 Andrei V. Shetuhin <reki@reki.ru> - 2.4.9-0
+* Thu Apr  2 2009 Andrei V. Shetuhin <reki@reki.ru> - 2.4.9-0
 - New classes: SimpleVM, SimpleCompiler
 
-* Tue Mar 18 2009 Andrei V. Shetuhin <reki@reki.ru> - 2.4.8-0
+* Wed Mar 18 2009 Andrei V. Shetuhin <reki@reki.ru> - 2.4.8-0
 - New functions: CONCAT, SUBSTR, TRUNCATE, MB_SIZE, MB_TRUNCATE, MB_SUBSTR
 
 * Mon Mar 16 2009 Andrei V. Shetuhin <reki@reki.ru> - 2.4.7-0
@@ -218,7 +222,7 @@ rm -rf %{buildroot}
 * Wed Mar  4 2009 Andrei V. Shetuhin <reki@reki.ru> - 2.4.5-0
 - Port to MacOS, new functions: RANDOM and LOG
 
-* Sat Feb 15 2009 Andrei V. Shetuhin <reki@reki.ru> - 2.4.4-0
+* Sun Feb 15 2009 Andrei V. Shetuhin <reki@reki.ru> - 2.4.4-0
 - New functions: HMAC_MD5, URIESCAPE
 
 * Tue Feb 10 2009 Andrei V. Shetuhin <reki@reki.ru> - 2.4.3-0
@@ -257,7 +261,7 @@ rm -rf %{buildroot}
 * Fri Jul 11 2008 Andrei V. Shetuhin <reki@reki.ru> - 2.3.4-0
 - Debian Lenny bug fixes
 
-* Wed Jun 24 2008 Andrei V. Shetuhin <reki@reki.ru> - 2.3.3-0
+* Tue Jun 24 2008 Andrei V. Shetuhin <reki@reki.ru> - 2.3.3-0
 - Debug subsystem improvements
 
 * Wed Jun 18 2008 Andrei V. Shetuhin <reki@reki.ru> - 2.3.2-0
@@ -281,7 +285,7 @@ rm -rf %{buildroot}
 * Fri Apr 18 2008 Andrei V. Shetuhin <reki@reki.ru> - 2.2.0-0
 - Bug fixes, support of crossplatform bytecode file
 
-* Fri Mar 29 2008 Andrei V. Shetuhin <reki@reki.ru> - 2.1.2-0
+* Sat Mar 29 2008 Andrei V. Shetuhin <reki@reki.ru> - 2.1.2-0
 - Inverse translation map in <TMPL_include ...
 
 * Wed Mar 19 2008 Andrei V. Shetuhin <reki@reki.ru> - 2.1.1-0
@@ -305,5 +309,5 @@ rm -rf %{buildroot}
 * Mon Feb  4 2008 Andrei V. Shetuhin <reki@reki.ru> - 2.0.1-0
 - Bug fixes
 
-* Fri Jan 26 2008 Andrei V. Shetuhin <reki@reki.ru> - 2.0.0-0
+* Sat Jan 26 2008 Andrei V. Shetuhin <reki@reki.ru> - 2.0.0-0
 - First version 2.X release.

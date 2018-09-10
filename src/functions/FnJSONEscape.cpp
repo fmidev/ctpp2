@@ -80,7 +80,7 @@ INT_32 FnJSONEscape::Handler(CDT            * aArguments,
 				break;
 
 			case CDT::STRING_VAL:
-				sResult.append(EscapeJSONString(aArguments[iPos].GetString(), true, false));
+				sResult.append(EscapeJSONString(aArguments[iPos].GetString(), false, false));
 				break;
 
 			default:
