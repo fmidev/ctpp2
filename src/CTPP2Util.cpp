@@ -452,12 +452,12 @@ STLW::string WMLEscape(const STLW::string  & sData)
 
 		if (chTMP < ' ')
 		{
-			if (iBufferPointer >= (CTPP_ESCAPE_BUFFER_LEN - 6))
+			if (iBufferPointer >= (CTPP_ESCAPE_BUFFER_LEN - 7))
 			{
 				sRetVal.append(sBuffer, iBufferPointer);
 				iBufferPointer = 0;
 			}
-			snprintf(sBuffer + iBufferPointer, 6, "\\u%04d", chTMP);
+			snprintf(sBuffer + iBufferPointer, 7, "\\u%04d", chTMP);
 		}
 		else if (chTMP == '"')
 		{

@@ -1,6 +1,6 @@
 Summary: 	CTPP2 template engine.
 Name: 		ctpp2
-Version: 	2.8.6
+Version: 	2.8.8
 Release: 	0%{?dist}
 License: 	BSD
 Source: 	ctpp2-%{version}.tar.gz
@@ -64,6 +64,9 @@ rm -rf %{buildroot}
 %{_libdir}/libctpp2-st.a
 
 %changelog
+* Wed Sep 11 2019 Mika Heiskanen <mika.heiskanen@fmi.fi> - 2.8.8-0
+- Fixed wmlescape to use proper snprintf size limit
+
 * Mon Sep 10 2018 Mika Heiskanen <mika.heiskanen@fmi.fi> - 2.8.6-0
 - Repackaged with jsonescape without ECMA mode for string encoding
 - Removed unnecessary escaping of / in JSON strings
